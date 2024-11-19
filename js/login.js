@@ -31,6 +31,7 @@ async function loginUser(name, password) {
         const data = await response.json();
         localStorage.setItem('token', data.access_token); 
         localStorage.setItem('user_name', data.user_name || name); 
+        localStorage.setItem('max_score', data.max_score || 0); 
 
         window.location.href = '/pages/game.html';
     } catch (error) {

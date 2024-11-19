@@ -109,6 +109,42 @@
         ctx.drawImage(spritesheet, sprite[0], sprite[1], sprite[2], sprite[3], x, y, sprite[2], sprite[3]);
       }
 
+      async function updateMaxScore(score) {
+
+        const token = localStorage.getItem('token'); 
+        if (!token) {
+          alert("Intentelo más tarde");
+          return;
+        }
+
+        let maxScore = localStorage.getItem("max_score");
+
+        maxScore = maxScore ? parseInt(maxScore) : 0;
+
+        if (score > maxScore) {
+          
+          try {
+            const response = await fetch("http://127.0.0.1:8000/api/auth/update-max-score", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                 "Authorization": `Bearer ${token}`
+              },
+              body: JSON.stringify({ max_score: score }),
+            });
+            
+            if (!response.ok) {
+              throw new Error(`Error al actualizar la puntuación: ${response.statusText}`);
+            }
+            
+            localStorage.setItem("max_score", score);
+            console.log("Puntuación máxima actualizada en el servidor");
+          } catch (error) {
+            console.error("Error al realizar el fetch:", error);
+          }
+        }
+      }
+
       var gameStates = {
         waiting: 0,
         playing: 1,
@@ -161,9 +197,12 @@
 
       function gameOver() {
         currentState = gameStates.gameOver;
+        updateMaxScore(score);
+
         if (score > bestScore) {
-          localStorage.setItem("bestScore", score); //Puntuación más alta
+          localStorage.setItem("bestScore", score);
         }
+
         canClick = false;
         setTimeout(function () {
           canClick = true;
@@ -228,6 +267,7 @@
             bestScore = 0;
             localStorage.setItem("bestScore", 0);
           }
+          welcomeMessageElement.style.display = "none";
         } else if (currentState == gameStates.playing) {
           bird.vy = -bird.jump;
         } else {

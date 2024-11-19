@@ -33,7 +33,12 @@ function enviarFormulario(event) {
             return response.json();
         })
         .then((data) => {
-            alert(`Usuario registrado con éxito: ${data.name}`);
+            alert(`Usuario registrado con éxito: ${data.user_name}`);
+
+            localStorage.setItem('user_name', data.user_name);
+            localStorage.setItem('token', data.access_token);  
+            localStorage.setItem('max_score', data.max_score); 
+
             window.location.href = '/pages/game.html';
             formulario.reset(); 
         })
