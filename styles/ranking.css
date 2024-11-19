@@ -1,16 +1,8 @@
 :root {
-    --color: #9bbc0f;
-    --color2: #8bac0f;
-    --color3: #306230;
-    --color4: #0f380f;
-}
-
-*,
-*::after,
-*::before {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+    --color: #9bbc0f; /* Fondo principal */
+    --color2: #8bac0f; /* Fondo general */
+    --color3: #306230; /* Botones */
+    --color4: #0f380f; /* Sombra/Texto oscuro */
 }
 
 @font-face {
@@ -19,36 +11,65 @@
     font-weight: 400;
     src:
       local("Flappy Bird"),
-      url("/resources/fonts/flappybirdy/FlappyBirdy.ttf") format("truetype");
+      url("") format("truetype");
 }
 
 body {
-    font-family: 'Flappy Bird' ,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     background-color: var(--color2);
+    margin: 0;
 }
 
 h1 {
-    font-size: 9rem;
+    font-size: 8rem;
+    text-align: center;
+    color: var(--color4);
+    text-shadow: 3px 3px var(--color);
+    margin-top: 2rem;
 }
 
 main {
-    width: 100vw;
-    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.main__ranking-container {
+    background-color: var(--color3);
+    border: 3px solid var(--color4);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 5px 5px var(--color4);
+    width: 80%;
+    max-width: 600px;
 }
 
 .main__ranking {
-    margin: 2rem 0;
-    display: flex;
-    flex-direction: column;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 1rem;
+    text-align: center;
 }
 
 .main__header {
+    grid-column: span 2; /* La cabecera ocupa ambas columnas */
     display: flex;
-    gap: 8rem;
-    font-size: 5rem;
+    justify-content: space-between;
+    padding: 0 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color4);
 }
 
+.main__name,
+.main__score {
+    font-size: 2rem;
+    color: white;
+    background-color: var(--color2);
+    padding: 1rem;
+    border-radius: 5px;
+    text-shadow: 2px 2px var(--color4);
+}
