@@ -1,40 +1,86 @@
 :root {
-    --color: #9bbc0f;
-    --color2: #8bac0f;
-    --color3: #306230;
-    --color4: #0f380f;
+  --color: #9bbc0f;
+  --color2: #8bac0f;
+  --color3: #306230;
+  --color4: #0f380f;
 }
 
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 @font-face {
-    font-family: 'Flappy Bird';
-    font-style: normal;
-    font-weight: 400;
-    src:
-      local("Flappy Bird"),
-      url("/resources/fonts/flappybirdy/FlappyBirdy.ttf") format("truetype");
+  font-family: "Flappy Bird";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Flappy Bird"),
+    url("/resources/fonts/flappybirdy/FlappyBirdy.ttf") format("truetype");
 }
 
-
 .back__button {
-    display: block;
-    font-family: 'Flappy Bird' ,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 2rem;
-    padding: .5rem .9rem;
-    border-radius: 10px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--color);
-    background-color: var(--color3);
-    box-shadow: 2px 2px var(--color4);
+  display: block;
+  font-family: "Flappy Bird", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 2rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color);
+  background-color: var(--color3);
+  box-shadow: 2px 2px var(--color4);
+}
+
+.logout__button {
+  display: block;
+  font-family: "Flappy Bird", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 2rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color);
+  background-color: var(--color3);
+  box-shadow: 2px 2px var(--color4);
+}
+
+body {
+  background-color: #8bac0f;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid black;
+}
+
+#welcomeMessage {
+  text-align: center;
+  font-size: 18px;
+  color: #306230;
+  font-weight: bold;
+  margin-top: 20px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
 }
